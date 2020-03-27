@@ -4,11 +4,11 @@
 char* pName(char p){
 	switch(p){
 		case 'e':
-			return "Å»Ãâ±¸";
+			return "íƒˆì¶œêµ¬";
 		case 'v':
-			return "ÀÚÆÇ±â";
+			return "ìíŒê¸°";
 		case 'r':
-			return "ÀØÈùÀÚµéÀÇ ¾È½ÄÃ³";
+			return "ìŠíŒìë“¤ì˜ ì•ˆì‹ì²˜";
 	}
 }
 
@@ -20,13 +20,14 @@ void resting_area(int p){
 	//screen
 	//healing();
 	//NPCs1();
+	--remainder[p-2];
 }
 
 void vending_machine(/*item array*/){
 	//screen
-	//¾ÆÀÌÅÛ Ãâ·Â
+	//ì•„ì´í…œ ì¶œë ¥
 	for(;;){
-		//»óÁ¡ Ä¿¸Çµå ¹İº¹  
+		//ìƒì  ì»¤ë§¨ë“œ ë°˜ë³µ  
 	}
 }
 
