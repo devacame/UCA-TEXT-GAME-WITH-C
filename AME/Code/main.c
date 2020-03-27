@@ -7,9 +7,10 @@
 #include "event_screen.h"
 #include "spirit-type.h"
 
+
+
 int main(void) {
-	start_screen();
 	
-	printf("%s", spirit('f').name);
+	
 	return 0;
 }

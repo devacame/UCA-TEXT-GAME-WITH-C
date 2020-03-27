@@ -1,50 +1,65 @@
 #include <stdio.h>
+#include <time.h>
 
-typedef struct Types{
+typedef struct Spirit{
 	char* name;
 	int stat;
-}Type;
-
-typedef struct Spirits{
-	char* name;
-	Type type;
 }Spirit;
 
 Spirit Ifrit(){
 	Spirit Ifrit;
 	Ifrit.name = "이프리트";
-	Ifrit.type.name = "fire";
-	Ifrit.type.stat = 100;
+	Ifrit.stat = 100;
 	return Ifrit;
 }
 
 Spirit Electron(){
 	Spirit Electron;
 	Electron.name = "일렉트론";
-	Electron.type.name = "electric";
-	Electron.type.stat = 100;
+	Electron.stat = 100;
 	return Electron;
 }
 	
 Spirit Aegis(){
 	Spirit Aegis;
 	Aegis.name = "아이기스";
-	Aegis.type.name = "normal";
-	Aegis.type.stat = 50;
+	Aegis.stat = 50;
 	return Aegis;
 }
 	
-Spirit spirit(char type){
-	switch(type){
-		case 'f':
-			return Ifrit();
-		case 'e':
-			return Electron();
-		case 'n':
-			return Aegis();
-		default:
-			puts("Error with getting Spirit");
-			break;
+
+
+void spirit_open(){
+	static int arr[3] = {0,}; //index 0 = ifrit 1 = electron 2 = aegis
+	(unsigned)srand(time(NULL));
+	//화면  
+	if(rand()%100 == 15){
+		int temp = rand() % 3;
+		for(;;){
+			if(arr[temp] == 0){
+				arr[temp] = 1;
+				//screen
+				switch(temp){
+					case 0:
+						//update_stat(fire = Ifrit().stat);
+						//screen
+						break;
+					case 1:
+						//update_stat(fire = Electron().stat);
+						//screen
+						break;
+					case 2:
+						//update_stat(fire = Aegis().stat);
+						//screen
+						break;
+				}
+				break;
+			}else{
+				continue;
+			}	
+		}
+	}else{
+		//screen
 	}
 }
 
