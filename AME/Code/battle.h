@@ -1,1 +1,1 @@
-int fight(/*charset enemy, charstat player,*/ char p);
+void fight(char p, int id);

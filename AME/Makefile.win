@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Code/event_screen.o Code/main.o Code/spirit-type.o Code/special-places.o Code/battle.o
-LINKOBJ  = Code/event_screen.o Code/main.o Code/spirit-type.o Code/special-places.o Code/battle.o
+OBJ      = Code/event_screen.o Code/main.o Code/special-places.o Code/battle.o Code/map.o Code/game_function.o Code/mc.o Code/item.o Code/deathevent.o Code/inventory.o Code/spirit-type.o Code/npc.o
+LINKOBJ  = Code/event_screen.o Code/main.o Code/special-places.o Code/battle.o Code/map.o Code/game_function.o Code/mc.o Code/item.o Code/deathevent.o Code/inventory.o Code/spirit-type.o Code/npc.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -30,11 +30,32 @@ Code/event_screen.o: Code/event_screen.c
 Code/main.o: Code/main.c
 	$(CC) -c Code/main.c -o Code/main.o $(CFLAGS)
 
-Code/spirit-type.o: Code/spirit-type.c
-	$(CC) -c Code/spirit-type.c -o Code/spirit-type.o $(CFLAGS)
-
 Code/special-places.o: Code/special-places.c
 	$(CC) -c Code/special-places.c -o Code/special-places.o $(CFLAGS)
 
 Code/battle.o: Code/battle.c
 	$(CC) -c Code/battle.c -o Code/battle.o $(CFLAGS)
+
+Code/map.o: Code/map.c
+	$(CC) -c Code/map.c -o Code/map.o $(CFLAGS)
+
+Code/game_function.o: Code/game_function.c
+	$(CC) -c Code/game_function.c -o Code/game_function.o $(CFLAGS)
+
+Code/mc.o: Code/mc.c
+	$(CC) -c Code/mc.c -o Code/mc.o $(CFLAGS)
+
+Code/item.o: Code/item.c
+	$(CC) -c Code/item.c -o Code/item.o $(CFLAGS)
+
+Code/deathevent.o: Code/deathevent.c
+	$(CC) -c Code/deathevent.c -o Code/deathevent.o $(CFLAGS)
+
+Code/inventory.o: Code/inventory.c
+	$(CC) -c Code/inventory.c -o Code/inventory.o $(CFLAGS)
+
+Code/spirit-type.o: Code/spirit-type.c
+	$(CC) -c Code/spirit-type.c -o Code/spirit-type.o $(CFLAGS)
+
+Code/npc.o: Code/npc.c
+	$(CC) -c Code/npc.c -o Code/npc.o $(CFLAGS)

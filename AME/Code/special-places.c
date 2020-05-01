@@ -1,33 +1,197 @@
 #include <stdio.h>
 #include <windows.h>
+#include <time.h>
+#include <stdlib.h>
+#include "mc.h"
+#include "item.h"
+#include "npc.h"
 
-char* pName(char p){
+char* pName(char p){  //Àå¼Ò ÀÌ¸§ Ãâ·Â¿ë ÇÔ¼ö (Áö¿ï °¡´É¼º ´Ù) 
 	switch(p){
 		case 'e':
-			return "íƒˆì¶œêµ¬";
-		case 'v':
-			return "ìžíŒê¸°";
-		case 'r':
-			return "ìžŠížŒìžë“¤ì˜ ì•ˆì‹ì²˜";
+			return "Å»Ãâ±¸";
+		default:
+			return "½°ÅÍ/ÀÚÆÇ±â";
 	}
 }
-
-void resting_area(int p){
-	static int remainder[4] = {6, 6, 6, 6};
-	if(remainder[p-2] == 0){
-		//deny access to SP
+ 
+void resting_area(int p, int mode){ //½°ÅÍ ÇÔ¼ö  
+	static int remainder[4] = {6, 6, 6, 6}; //½°ÅÍ ÀÔÀåÁ¦ÇÑ
+	if(mode == 1){
+		remainder[0] = 6;
+		remainder[1] = 6;
+		remainder[2] = 6;
+		remainder[3] = 6;
+		return ;
 	}
-	//screen
-	//healing();
-	//NPCs1();
-	--remainder[p-2];
+	srand(time(NULL)); 
+	if(remainder[p-2] == 0){ //p-2ÀÎ ÀÌÀ¯´Â ½°ÅÍÀÇ id°¡ 2ºÎÅÍ ½ÃÀÛÇÔ ¸¸ÀÏ È½¼ö°¡ 0ÀÌ¸é ÀÔÀåºÒ°¡  
+		printf("%d¹ø È¸±ÍÀÚÀÇ ½°ÅÍ´Â ´õÀÌ»ó µé¾î°¥ ¼ö ¾ø½À´Ï´Ù. °æ°í´Â ÃæºÐÈ÷ µå·ÈÀ»ÅÙµ¥¿ä.\n");
+		return ;
+	}
+	--remainder[p-2]; //ÀÔÀåÈ½¼ö °¨¼Ò
+	printf("%d¹ø È¸±ÍÀÚÀÇ ½°ÅÍ¿¡ µµÂøÇÏ¼Ì½À´Ï´Ù.\n");
+	MC(3, 0, 0, 0, 0, 0); //Èú¸µ 
+	NPCs(rand()%2); //Äù½ºÆ®  
+	  
 }
 
-void vending_machine(/*item array*/){
-	//screen
-	//ì•„ì´í…œ ì¶œë ¥
-	for(;;){
-		//ìƒì  ì»¤ë§¨ë“œ ë°˜ë³µ  
+void vending_machine(){ 
+	puts("-------------ÀÚÆÇ±â-------------");
+	printf("\t1: ¹°¾çµ¿ÀÌ-750G 2: Èû ¹öÇÁ(7Áõ°¡) -175G 3: Èû ¹öÇÁ(10Áõ°¡) -250G \n4: ¼Óµµ ¹öÇÁ(7Áõ°¡) -175G 5: ¼Óµµ ¹öÇÁ(10Áõ°¡) -250G 6: Èû µð¹öÇÁ(7°¨¼Ò) -225G \n\t7: Èû µð¹öÇÁ(10°¨¼Ò) -300G 8: ¼Óµµ µð¹öÇÁ(7°¨¼Ò) -225G 9: ¼Óµµ µð¹öÇÁ(10°¨¼Ò) -300G \n10: ¼ö¸®µµ±¸(Ã¼·Â10¿µ±¸Áõ°¡) -500G 11: ¼ö¸®µµ±¸(Èû10¿µ±¸Áõ°¡) -500G 12: ¼ö¸®µµ±¸(¼Óµµ10¿µ±¸Áõ°¡) -500G \n\t13: ÀÎº¥Åä¸® 3Ä­Áõ°¡ -300G 14: ÀÎº¥Åä¸® 5Ä­ Áõ°¡ -450G 15: Àü±âÃæ°Ý±â -1800G \n16: ·¹ÀÌÁ® -1800G 17: Á¤·É¾Ë -5000G 18: ÆÐ³ÎÆ¼ ¹«½Ã±Ç -¼ÒÁö±ÝÀÇ 1/4(¼ÒÁö±ÝÀÌ 4000GÀÌ»óÀÏ°æ¿ì)\n");
+	puts("--------------------------------");
+	puts("¾ÆÀÌÅÛ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. ³ª°¡·Á¸é 0À» ÀÔ·ÂÇÏ¼¼¿ä");
+	int cmd=-1; 
+	for(;cmd!=0;){
+		money(0,0);
+		printf(">> "); scanf("%d", &cmd);
+		if(cmd == 0) return ;
+		switch(cmd){
+			case 1:
+				if(money(3,0) >= 750){
+					de_buff(2,0);
+					money(1,-750);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 2:
+				if(money(3,0) >= 175) {
+					de_buff(0,0);
+					money(1,-175);
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 3:
+				if(money(3,0) >= 250){
+					de_buff(0,1);
+					money(1,-250);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 4:
+				if(money(3,0) >= 175) {
+					de_buff(0,2);
+					money(1,-175);
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 5:
+				if(money(3,0) >= 250){
+					de_buff(0,3);
+					money(1,-250);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 6:
+				if(money(3,0) >= 175) {
+					de_buff(1,0);
+					money(1,-175);
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 7:
+				if(money(3,0) >= 250){
+					de_buff(1,1);
+					money(1,-250);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}	
+				break;
+			case 8:
+				if(money(3,0) >= 175) {
+					de_buff(1,2);
+					money(1,-175);
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 9:
+				if(money(3,0) >= 250){
+					de_buff(1,3);
+					money(1,-250);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 10:
+				if(money(3,0) >= 500){
+					repair(0, 1);
+					money(1,-500);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}			
+				break;
+			case 11:
+				if(money(3,0) >= 500){
+					repair(0, 0);
+					money(1,-500);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}	
+				break;
+			case 12:
+				if(money(3,0) >= 500){
+					repair(0, 2);
+					money(1,-500);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 13: 
+				if(money(3,0) >= 300){
+					bag(0, 0);
+					money(1,-300);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}					 
+				break;
+			case 14: 
+				if(money(3,0) >= 450){
+					bag(0,1);
+					money(1,-450);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}					
+				break;
+			case 15:
+				if(money(3,0) >= 1800){
+					statopen(0);
+					money(1,-1800);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}					
+				break;
+			case 16:
+				if(money(3,0) >= 1800){
+					statopen(1);
+					money(1,-1800);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}					
+				break;
+			case 17:
+				if(money(3,0) >= 5000){
+					spirit();
+					money(1,-5000);	
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+			case 18:
+				if(money(3,0) >= 4000){
+					dp();
+					money(1, -(money(3,0)/4));
+				}else{
+					puts("µ·, ¾øÀ¸¸é¼­ ¹» »ç·Á°í?");
+				}
+				break;
+		}
 	}
 }
 
