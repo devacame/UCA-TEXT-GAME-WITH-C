@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<title>AME: 2253 | 안드로이드 미로 탈출</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+.mySlides {display:none}
+.w3-tag, .fa {cursor:pointer}
+.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+</style>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-large w3-light-grey">
+    <div class="w3-col s4">
+      <a href="#" class="w3-button w3-block">Home</a>
+    </div>
+    <div class="w3-col s4">
+      <a href="#about" class="w3-button w3-block">About</a>
+    </div>
+    <div class="w3-col s4">
+    <a href="#download" class="w3-button w3-block">Download</a>
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+
+  <div class="w3-panel">
+    <h1><b>AME: 2253</b></h1>
+    <p>안드로이드 미로 탈출: 2253번째 실험</p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img src="images/main.PNG" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">시작화면</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="images/item-get.PNG" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">게임화면</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="images/redo.PNG" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">클리어 후 화면</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="images/fail.PNG" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">실패화면</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img src="images/clear.PNG" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">종료화면</span>
+      </div>
+    </div>
+
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+    
+      <div class="w3-center">
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(5)"></span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Grid -->
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">게임 특징</span>
+    </div>
+    <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+      <h3>악랄함</h3>
+      <p>뭐, 미로 탈출만 하면 되요. 다만 답답하고 오래 걸릴뿐이죠. 아 현실반영인가?</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+      <h3>5개의 미로</h3>
+      <p>5개의 미로로 끝나지 않는 재미(?) 미로를 클리어하면 아직 클리어하지 않은 미로으로 갈 수 있습닏가.</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+      <h3>무한 부활</h3>
+      <p>죽어도 당신은 기술의 집약체 안드로이드, 적절한 돈만 내면 다시 수리해드릴 수 있다고요?!</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+      <h3>하드 모드</h3>
+      <p>기본 게임이 쉽다 하는 당신을 위해! 한시간내로 탈출하는 하드 모드는 당신의 타자 속도를 늘려줍니다.</p>
+    </div>
+  </div>
+  
+  <!-- Grid -->
+  <div class="w3-row-padding" id="about">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">개발자들</span>
+    </div>
+
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-card-4">
+        <img src="images/womanicon.png" alt="Woman" style="width:100%; height: 400px">
+        <div class="w3-container">
+          <h3>개발자 1</h3> 
+          <p class="w3-opacity">인벤토리 | 아이템 | 캐릭터 | 퀘스트</p>
+          <p><blockquote>"개인적으로 어렵게 했다고 느껴지지는 않는데 나중에는 더 어려운 게임을 만들어보겠습니다."</blockquote></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-card-4">
+        <img src="images/manicon.png" alt="Man" style="width:100%; height: 400px">
+        <div class="w3-container">
+          <h3>개발자 2</h3>
+          <p class="w3-opacity">배틀 | 정령 | 특수한 장소들 | 화면 | 명령 처리 | 코드 병합</p>
+          <p><blockquote>"전 만들면서 게임 테스트가 가장 힘들었습니다. 제가 만들었지만 보기 싫어요."</blockquote></p>
+        </div>
+      </div>
+    </div>
+
+    <!--Download-->
+    <div class="w3-row-padding" id="download">
+        <div class="w3-center w3-padding-64">
+            <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Download</span>
+          </div>
+        <div class="w3-margin-bottom">
+            <button class="w3-button w3-black w3-block" style="margin-left: 10%; width: 80%; margin-bottom: 7%"><a href="https://drive.google.com/uc?id=1N8-X2P0KnJsAqebP0M1lrtpVBeK8DleP&export=download" target="_blank">Download</a></button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+
+<footer class="w3-container w3-padding-32 w3-light-grey w3-center" style="padding-top: 7%">
+  <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+
+<script>
+// Slideshow
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demodots");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
+
+</body>
+</html>
