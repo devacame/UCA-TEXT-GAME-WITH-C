@@ -75,14 +75,13 @@ void game_start(int id, int mode){ //게임 시작 함수 id는 맵 판별
 	char cmd, ecmd;
 	int code, i;
 	if(mode == 1) time_spent(id);
-	printf(">> "); scanf("%c", &cmd); while ((getchar()) != '\n');  //커맨드 입력 / w,a,s,d,e,p,v 
+	printf(">> "); scanf("%c", &cmd); if(cmd == 10) game_start(id, mode); while ((getchar()) != '\n');  //커맨드 입력 / w,a,s,d,e,p,v 
 	switch(cmd){
 		case 'w':
 		case 'a':
 		case 's':
 		case 'd':
 			code = move(cmd, id);
-		//	printf("%d %d %d %d\n", id, x, y, code);
 			if(code != 0) map_interact(code, id);
 			break;
 		case 'e':
@@ -94,7 +93,15 @@ void game_start(int id, int mode){ //게임 시작 함수 id는 맵 판별
 			printf("  ------------------------------------------------------------------------\n");
 			break; 
 		case 'p':
-			stop('m');
+			puts("정말 그만두시나요? (y/n)");
+			char cm = 'q';
+			do{
+				printf(">>> "); scanf("%c", &cm);
+				if(cm == 10) continue;
+				while ((getchar()) != '\n');
+				if(cm == 'y') stop('m');
+				else if(cm == 'n') break;
+			}while(cm != 'y' || cm != 'n');
 			break;
 	}
 	Sleep(400);

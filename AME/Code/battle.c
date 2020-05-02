@@ -65,9 +65,9 @@ void fight(char p, int id){
 			puts("지금은 님이 더 빠름");
 			printf("그럼 이제 뭐할거임? 공격-0, 아이템 사용-1  : ");
 			while(1){
-				printf(">>> "); scanf("%c", &cmd); while ((getchar()) != '\n');  //커맨드 입력  
+				printf(">>> "); scanf("%c", &cmd); if(cmd == 10) continue; while ((getchar()) != '\n');  //커맨드 입력  
 				if(pInput-'0' != 0 && pInput-'0' != 1){ //입력이 제대로 되지 않을때 다시 하기  
-					printf("\n뭐하는거냐 제대로 입력안해? : ");
+					printf("\n뭐하는거냐 제대로 입력안해?");
 					continue; 
 				}else{
 					if(pInput==0){ //공격 실행되는 것들은 적 코드와 동일  
@@ -90,7 +90,7 @@ void fight(char p, int id){
 						printf("1: 힘버프(7)     -%4d개   2: 힘버프(10) -%4d개   	 3: 속도버프(7) -%4d개 \n4: 속도버프(10)  -%4d개   5: 힘디버프(7) -%4d개      6: 힘디버프(10) -%4d개 \n7: 속도디버프(7) -%4d개   8: 속도디버프(10) -%4d개   9: 물양동이 -%4d개\n", inventory(3,4,0),inventory(3,5,0),inventory(3,6,0),inventory(3,7,0),inventory(3,8,0),inventory(3,9,0),inventory(3,10,0),inventory(3,11,0),inventory(3,3,0));
 						int cmd, t = 0;
 						while(1){
-							printf(">>>> "); scanf("%c", &cmdC); while ((getchar()) != '\n'); 
+							printf(">>>> "); scanf("%c", &cmdC); if(cmd == 10) continue; while ((getchar()) != '\n'); 
 							cmd = cmdC - '0';
 							if(cmd<1 || cmd>9){
 								puts("숫자 잘못 넣었네? 제대로 넣자");

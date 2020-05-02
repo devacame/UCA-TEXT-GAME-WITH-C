@@ -72,8 +72,10 @@ int inventory(int mode,int item,int size){		//인벤토리(mode 0=인벤토리 증가,1=파
 		printf("\n");
 		money(0,0);
 		printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n아이템을 사용하려면 해당 위치의 번호를 입력하세요.(사용가능한 아이템만 번호가 뜹니다.)\n장비를 해제하려면 -1를, 나가려면 0을 누르시오.\n");
+		char cm;
 		do{ 
-			printf(">>> "); scanf("%d",&answer);
+			printf(">>> "); scanf("%c",&cm); if(cm == 10) continue; while ((getchar()) != '\n');
+			answer = cm - '0';
 			while ((getchar()) != '\n');
 		}while(!(answer<=ivsize&&answer>=-1));
 		if(answer==-1&&!(weaponC==3)){		//무기 해제 

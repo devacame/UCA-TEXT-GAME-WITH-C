@@ -112,8 +112,10 @@ void map_clear(int prev){
 	printf("옵션 3: 못해먹겠다 (개발자: ㅇㅈ)\n");
 	Sleep(200);
 	int input=0;
+	char cm;
 	while(input!= 1 && input != 2 && input != 3){  
-		printf(">> "); scanf("%d", &input); while ((getchar()) != '\n');
+		printf(">> "); scanf("%c", &cm); if(cm == 10) continue; while ((getchar()) != '\n');
+		input = cm - '0';
 		if(input == 1){
 			int i = rand() % 4;
 			while(i == prev){
@@ -144,9 +146,10 @@ void fail(int prev){
 	Sleep(750);
 	puts("1: 다시 도전 한다 \n2: 일반이나 해야겠다 \n3:다른거 하드모드 해볼래 \n4: 그냥 안할래 이딴 게임");
 	int input=0;
-	printf(">> "); scanf("%d", &input); while ((getchar()) != '\n');
+	char cm;
 	while(input != 1 && input != 2 && input != 3 && input != 4){  
-		printf(">> "); scanf("%s", input);
+		printf(">> "); scanf("%c", &cm); if(cm == 10) continue; while ((getchar()) != '\n');
+		input = cm - '0';
 		if(input == 1){
 			int i = rand() % 4;
 			while(i == prev){

@@ -79,7 +79,7 @@ void NPCs(int who){		//npc출력(who 0=1번째 npc,1=2번째 npc)
 		Sleep(500);
 		printf("\n이야기를 할까?- 1    그냥튀자 제정신이 아닌것같다- 2\n\n");
 		do{
-			scanf("%c",&ans); while ((getchar()) != '\n');
+			printf(">>> "); scanf("%c",&ans); if(ans == 10) continue; while ((getchar()) != '\n');
 			answer = ans - '0';	
 		}while(!(answer==2||answer==1));
 		if(answer==1){
