@@ -33,7 +33,14 @@ void resting_area(int p, int mode){ //½°ÅÍ ÇÔ¼ö
 	printf("%d¹ø È¸±ÍÀÚÀÇ ½°ÅÍ¿¡ µµÂøÇÏ¼Ì½À´Ï´Ù.\n");
 	MC(3, 0, 0, 0, 0, 0); //Èú¸µ 
 	NPCs(rand()%2); //Äù½ºÆ®  
-	  
+	int temp=0, tem = 0;
+	if(rand()%1000000 == 153427 || temp > 0){
+		tem = trashMC(0);
+		temp++;
+		if(tem == 1){
+			temp = 0;
+		}
+	} 
 }
 
 void vending_machine(){ 

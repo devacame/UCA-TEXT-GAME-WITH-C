@@ -90,6 +90,11 @@ void reset(int id){
 	map_interact(101, id);
 	MC(6,0,0,0,0,0);
 	time_spent(-1);
+	NPCsp(-1, -1);
+	NPCs(-1);
+	NPCfp(-1, -1);
+	NPCf(-1);
+	trashMC(-1);
 }
 
 void map_clear(int prev){

@@ -22,9 +22,15 @@ void assist_c(int mode,int code){	//mode 0=npc이름 1=주인공 대사code=코드
 		printf("%s",talk[code]);
 	}
 }
+
 int NPCsp(int mode,int who){
 	static NQ need[2];
 	static int number[2]={0,0},tem1,tem2;
+	if(mode == -1){
+		number[0] = 0;
+		number[1] = 0;
+		return ;
+	}
 	if(number[who]==0){
 		srand(time(NULL));
 		tem1=rand()%10;
@@ -61,6 +67,11 @@ int NPCsp(int mode,int who){
 }
 void NPCs(int who){		//npc출력(who 0=1번째 npc,1=2번째 npc)
 	static int gq[2]={0,0},code[2];			//NPC의 퀘스트를 받았는가 확인
+	if(who == -1){
+		gq[0] = 0;
+		gq[1] = 0;
+		return ;
+	}
 	int answer,num;
 	char ans;
 	NPCsp(0,who);
@@ -95,6 +106,10 @@ void NPCs(int who){		//npc출력(who 0=1번째 npc,1=2번째 npc)
 int NPCfp(int mode,int who){			//페어 퀘스트 npc구현1
 	static NQ need[2];
 	static int number=0,tem1,tem2;
+	if(mode == -1){
+		number = 0;
+		return ;
+	}
 	if(number==0){
 		srand(time(NULL));
 		tem1=rand()%3;
@@ -123,6 +138,11 @@ int NPCfp(int mode,int who){			//페어 퀘스트 npc구현1
 }
 void NPCf(int who){	//페어퀘스트를 주는 npc 구현
 	static int number=0,gq=0,code;
+	if(who = -1){
+		number = 0;
+		gq = 0;
+		return ;
+	}
 	int answer,num;
 	char ans;
 	NPCfp(0,who);
@@ -150,8 +170,12 @@ void NPCf(int who){	//페어퀘스트를 주는 npc 구현
 		}
 	}
 }
-void trashMC(){			//부서진 주인공(탈출구 알려주는 npc) 
+int trashMC(int i){			//부서진 주인공(탈출구 알려주는 npc) 
 	static int gq=0,tem1;
+	if(i==-1){
+		gq = 0;
+		return ;
+	}
 	int num;
 	if(gq==0){
 		printf("부서진 '당신' : 안녕.\n\n");
@@ -174,6 +198,7 @@ void trashMC(){			//부서진 주인공(탈출구 알려주는 npc)
 			inventory(1,23,1); 
 			money(1,625);
 			printf("부서진 '당신' : 잘가\n"); 
+			return 1;
 		}
 	}	
 }

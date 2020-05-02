@@ -11,4 +11,4 @@ int NPCsp(int mode,int who);
 void NPCs(int who);
 int NPCfp(int mode,int who);
 void NPCf(int who);
-void trashMC();
+int trashMC(int i);
