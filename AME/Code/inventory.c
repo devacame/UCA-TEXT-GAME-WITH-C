@@ -74,9 +74,7 @@ int inventory(int mode,int item,int size){		//인벤토리(mode 0=인벤토리 증가,1=파
 		printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n아이템을 사용하려면 해당 위치의 번호를 입력하세요.(사용가능한 아이템만 번호가 뜹니다.)\n장비를 해제하려면 -1를, 나가려면 0을 누르시오.\n");
 		char cm;
 		do{ 
-			printf(">>> "); scanf("%c",&cm); if(cm == 10) continue; while ((getchar()) != '\n');
-			answer = cm - '0';
-			while ((getchar()) != '\n');
+			printf(">>> "); scanf("%d",&answer); while ((getchar()) != '\n');
 		}while(!(answer<=ivsize&&answer>=-1));
 		if(answer==-1&&!(weaponC==3)){		//무기 해제 
 			int tem3=0,num=0,stat[3]={15,25,45};
@@ -88,13 +86,14 @@ int inventory(int mode,int item,int size){		//인벤토리(mode 0=인벤토리 증가,1=파
 			}
 			if(num==0){			//인벤토리에 공간이 없을시
 				printf("인벤토리에 공간이 없어요. 다시 비우고 오시던가\n");
-			}else if(num==1){				//무기 장착해제 
+			}else if(num>=1){				//무기 장착해제 
 				itemuse(weaponC,2);
 				weaponC=3;
+				num=0;
 			} 
 		}else if(answer>0){
 			if(inven[answer-1]==0){
-				printf("해당 칸에는 아이템이 존재하지 않아요.");
+				printf("해당 칸에는 아이템이 존재하지 않아요.\n");
 			}else if(inven[answer-1]==24){
 				int map = idRT(0);//여기다가 맵 번호 넣어야함 전역변수로 넣으면 될것같은데 
 				itemuse(23, map);

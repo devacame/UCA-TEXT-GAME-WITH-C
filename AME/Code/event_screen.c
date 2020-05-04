@@ -22,6 +22,7 @@ void tutorial(){
 void start_screen(){
 	srand(time(NULL));
 	int i = 1;
+	char cm;
 	while(i){
 		if(kbhit()) break;
 		printf("*******************************\n");
