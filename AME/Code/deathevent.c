@@ -21,7 +21,7 @@ void death(){			//죽음 이벤트&패널티 무시권 사용
 	Sleep(100);
 	printf("수리해줘-1 싫어 차라리 깎이고 말지-2\n");
 	do{
-		scanf("%c",&answer);
+		printf(">>> "); scanf("%c",&answer); while((getchar()) != '\n');
 		an=answer-'0';
 		num++;
 	}while(an!=1 && an!=2 && num<5);
