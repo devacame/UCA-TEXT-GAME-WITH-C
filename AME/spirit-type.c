@@ -4,64 +4,64 @@
 #include "mc.h"
 #include "inventory.h"
 
-typedef struct Spirit{  //Á¤·É ±¸Á¶Ã¼  
-	char* name; //ÀÌ¸§ Ä³¸¯ÅÍÇü Æ÷ÀÎÅÍ 
-	int stat; //Áõ°¡µÉ ½ºÅÈ·® 
+typedef struct Spirit{  //ì •ë ¹ êµ¬ì¡°ì²´  
+	char* name; //ì´ë¦„ ìºë¦­í„°í˜• í¬ì¸í„° 
+	int stat; //ì¦ê°€ë  ìŠ¤íƒ¯ëŸ‰ 
 }Spirit;
 
 Spirit Ifrit(){
 	Spirit Ifrit;
-	Ifrit.name = "ÀÌÇÁ¸®Æ®(È­¿°)";
+	Ifrit.name = "ì´í”„ë¦¬íŠ¸(í™”ì—¼)";
 	Ifrit.stat = 100;
 	return Ifrit;
 }
 
 Spirit Electron(){
 	Spirit Electron;
-	Electron.name = "ÀÏ·ºÆ®·Ğ(Àü±â)";
+	Electron.name = "ì¼ë ‰íŠ¸ë¡ (ì „ê¸°)";
 	Electron.stat = 100;
 	return Electron;
 }
 	
 Spirit Aegis(){
 	Spirit Aegis;
-	Aegis.name = "¾ÆÀÌ±â½º(³ë¸Ö)";
+	Aegis.name = "ì•„ì´ê¸°ìŠ¤(ë…¸ë©€)";
 	Aegis.stat = 70;
 	return Aegis;
 }
 	
-int spi_chk[3] = {0,}; //index 0 = ifrit 1 = electron 2 = aegis  Æ¯Á¤ Á¤·É ¼ÒÈ¯ °¡´É ¿©ºÎ È®ÀÎ
+int spi_chk[3] = {0,}; //index 0 = ifrit 1 = electron 2 = aegis  íŠ¹ì • ì •ë ¹ ì†Œí™˜ ê°€ëŠ¥ ì—¬ë¶€ í™•ì¸
 
 void spirit_open(){ 
 	srand(time(NULL));
 	Sleep(1500);  
-	if(rand()%100 == 15){  //1%ÀÇ È®·ü·Î Á¤·É¾Ë¿¡¼­ Á¤·É ºÎÈ­  
-		int temp = rand() % 3; //¾î¶² Á¤·ÉÀÎÁö °áÁ¤  
+	if(rand()%100 == 15){  //1%ì˜ í™•ë¥ ë¡œ ì •ë ¹ì•Œì—ì„œ ì •ë ¹ ë¶€í™”  
 		for(;;){
-			if(spi_chk[temp] == 0){ //¾ÆÁ÷ ¼ÒÈ¯ÇÏÁö ¾ÊÀº Á¤·ÉÀÎÁö È®ÀÎ  
-				spi_chk[temp] = 1; //¼ÒÈ¯ÇÑ °ÍÀ¸·Î ÀüÈ¯  
-				switch(temp){  //ÇØ´ç Á¤·É °ü·Ã È­¸é Ãâ·Â ¹× ½ºÅÈ Áõ°¡  
+			int temp = rand() % 3; //ì–´ë–¤ ì •ë ¹ì¸ì§€ ê²°ì •  
+			if(spi_chk[temp] == 0){ //ì•„ì§ ì†Œí™˜í•˜ì§€ ì•Šì€ ì •ë ¹ì¸ì§€ í™•ì¸  
+				spi_chk[temp] = 1; //ì†Œí™˜í•œ ê²ƒìœ¼ë¡œ ì „í™˜  
+				switch(temp){  //í•´ë‹¹ ì •ë ¹ ê´€ë ¨ í™”ë©´ ì¶œë ¥ ë° ìŠ¤íƒ¯ ì¦ê°€  
 					case 0:
 						MC(1,0,0,0,Ifrit().stat,0);
-						printf("ÃàÇÏÇÕ´Ï´Ù! ¹«·Á 1%ÀÇ È®·üÀ» ¶Õ°í %s¿Í °è¾àÇß½À´Ï´Ù!", Ifrit().name); 
+						printf("ì¶•í•˜í•©ë‹ˆë‹¤! ë¬´ë ¤ 1%ì˜ í™•ë¥ ì„ ëš«ê³  %sì™€ ê³„ì•½í–ˆìŠµë‹ˆë‹¤!", Ifrit().name); 
 						break;
 					case 1:
 						MC(1,0,0,0,0,Electron().stat);
-						printf("ÃàÇÏÇÕ´Ï´Ù! ¹«·Á 1%ÀÇ È®·üÀ» ¶Õ°í %s¿Í °è¾àÇß½À´Ï´Ù!", Electron().name);
+						printf("ì¶•í•˜í•©ë‹ˆë‹¤! ë¬´ë ¤ 1%ì˜ í™•ë¥ ì„ ëš«ê³  %sì™€ ê³„ì•½í–ˆìŠµë‹ˆë‹¤!", Electron().name);
 						break;
 					case 2:
 						MC(1,0,Aegis().stat,0,0,0);
-						printf("ÃàÇÏÇÕ´Ï´Ù! ¹«·Á 1%ÀÇ È®·üÀ» ¶Õ°í %s¿Í °è¾àÇß½À´Ï´Ù!", Aegis().name);
+						printf("ì¶•í•˜í•©ë‹ˆë‹¤! ë¬´ë ¤ 1%ì˜ í™•ë¥ ì„ ëš«ê³  %sì™€ ê³„ì•½í–ˆìŠµë‹ˆë‹¤!", Aegis().name);
 						break;
 				}
 				inventory(1, 22, -1);
 				break;
 			}else{
-				continue; //ÀÌ¹Ì ¼ÒÈ¯ÇÑ Á¤·ÉÀÌ¶ó¸é ´Ù½Ã ¼ÒÈ¯  
+				continue; //ì´ë¯¸ ì†Œí™˜í•œ ì •ë ¹ì´ë¼ë©´ ë‹¤ì‹œ ì†Œí™˜  
 			}	
 		}
-	}else{ //ºÎÈ­ ½ÇÆĞ ÈÄ ÇØ´ç È­¸é Ãâ·Â  
-		puts("Âì ¹¹ ´ç¿¬È÷ ½ÇÆĞÇß½À´Ï´Ù. 1% È®·üÀÌ¶ó°í¿ä?");
+	}else{ //ë¶€í™” ì‹¤íŒ¨ í›„ í•´ë‹¹ í™”ë©´ ì¶œë ¥  
+		puts("ì¯§ ë­ ë‹¹ì—°íˆ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. 1% í™•ë¥ ì´ë¼ê³ ìš”?");
 		inventory(1,22,-1);
 	}
 }
